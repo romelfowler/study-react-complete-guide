@@ -9,19 +9,21 @@ class App extends Component {
   state = {
     name: [
       {name: "Jon"}
-    ],
-    nameLegnth: [
-      {name: 5}
     ]
   }
   inputChangeListener = (event) => {
+    const charLength = event.target.value;
     this.setState({
       name: [
-        {name: event.target.value}
+        {name: charLength}
       ]
     });
   }
+
   render() {
+
+
+
     return (
       <div className="App">
         <InputList

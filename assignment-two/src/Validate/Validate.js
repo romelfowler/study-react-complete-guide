@@ -1,16 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
  
-class ValidateComponent extends Component {
-    render() {
+const Validation = (props) =>  {
+    let validMsg = "text long enough";
 
-
+    if (props.inputLength <= 5) {
+        validMsg = "Text too short";
+    }
         return(
         <div>
-            <p>{this.props.name}</p>
+            <p>{validMsg}</p>
         </div>
         )
-    }
 }
 
 
-export default ValidateComponent; 
+export default Validation; 

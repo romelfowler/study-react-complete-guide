@@ -85,7 +85,7 @@ togglePeronsHandler = () => {
           click={() => this.deletePersonHandler(index)}
           name={person.name} 
           age={person.age}
-          all props should have 
+          // all props should have 
           // key prop helps react update lists with a unique key
           key={person.id}
           changed={(event) => this.nameChangedHandler(event, person.id)}/>

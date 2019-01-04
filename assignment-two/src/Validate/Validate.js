@@ -1,11 +1,16 @@
-import React from 'react';
+import React, {Component} from 'react';
+ 
+class ValidateComponent extends Component {
+    render() {
 
-const ValidateComponent = (props) => {
-    return(
+
+        return(
         <div>
-            <p>{props.name}</p>
+            <p>{this.props.name}</p>
         </div>
-    )
+        )
+    }
 }
+
 
 export default ValidateComponent; 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import InputList from './Input/Input';
-
 import './App.css';
+import InputList from './Input/Input';
 import ValidateComponent from './Validate/Validate';
 
 

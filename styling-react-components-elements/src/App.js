@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -53,10 +52,6 @@ class App extends Component {
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
     };
 
     let persons = null;
@@ -76,10 +71,7 @@ class App extends Component {
       );
 
       style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      };
+
     }
 
     // get red, bold
@@ -91,9 +83,10 @@ class App extends Component {
     if ( this.state.persons.length <= 1 ) {
       classes.push( 'bold' ); // classes = ['red', 'bold']
     }
-
+{/* StyleRoot is used to block the html - use this with Radium*/} 
     return (
-        <div className="App">
+     
+         <div className="App">
           <h1>Hi, I'm a React App</h1>
           {/* join('') - this assigns string. */}
           <p className={classes.join( ' ' )}>This is really working!</p>
@@ -106,6 +99,8 @@ class App extends Component {
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
   }
 }
-
-export default Radium(App);
+// Higher order component
+export default App;
  
+
+// NOTE: Radium can be added to components, class, and functions

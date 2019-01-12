@@ -4,5 +4,6 @@ import './index.css';
 import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// You can pass props here
+ReactDOM.render(<App newTitle="Relevant Persons"/>, document.getElementById('root'));
 registerServiceWorker();

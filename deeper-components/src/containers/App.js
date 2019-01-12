@@ -4,17 +4,40 @@ import Classes from './App.css';
 // COMPONENTS
 import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
+// Props gets passed because of "extend Component"
 class App extends Component {
-  state = {
-    persons: [
-      { id: 'asfa1', name: 'Max', age: 28 },
-      { id: 'vasdf1', name: 'Manu', age: 29 },
-      { id: 'asdf11', name: 'Stephanie', age: 26 }
-    ],
-    otherState: 'some other value',
-    showPersons: false
+  // LIFECYCLE HOOKS
+  constructor(props) {
+    super(props);
+    console.log('[App.js] Inside Constructor', props);
+    this.state = {
+      persons: [
+        { id: 'asfa1', name: 'Max', age: 28 },
+        { id: 'vasdf1', name: 'Manu', age: 29 },
+        { id: 'asdf11', name: 'Stephanie', age: 26 }
+      ],
+      otherState: 'some other value',
+      showPersons: false
+    }
   }
+  componentWillMount() {
+    console.log('[App.js] Inside Component Will Mount');
+  }
+  componentDidMount(){
+    console.log('[App.js] Component Did Mount');
+  }
+// STATE
+  // state = {
+  //   persons: [
+  //     { id: 'asfa1', name: 'Max', age: 28 },
+  //     { id: 'vasdf1', name: 'Manu', age: 29 },
+  //     { id: 'asdf11', name: 'Stephanie', age: 26 }
+  //   ],
+  //   otherState: 'some other value',
+  //   showPersons: false
+  // }
 
   nameChangedHandler = ( event, id ) => {
     const personIndex = this.state.persons.findIndex( p => {
@@ -26,7 +49,6 @@ class App extends Component {
     };
 
     // const person = Object.assign({}, this.state.persons[personIndex]);
-
     person.name = event.target.value;
 
     const persons = [...this.state.persons];
@@ -48,8 +70,9 @@ class App extends Component {
   }
 
   render () {
+    console.log('[App.js] Render');
+
     let persons = null;
-    let btnClass = '';
 
     if ( this.state.showPersons ) {
       persons = (
@@ -61,27 +84,16 @@ class App extends Component {
             />
         </div>
       );
-      btnClass = Classes.Red;
-    }
-
-    // get red, bold
-    // let classes = ['red','bold'].join('');
-    const assignedClass = [];
-    if ( this.state.persons.length <= 2 ) {
-      assignedClass.push( Classes.red ); // classes = ['red']
-    }
-    if ( this.state.persons.length <= 1 ) {
-      assignedClass.push( Classes.bold ); // classes = ['red', 'bold']
     }
     return (
 
          <div className={Classes.App}>
-          <h1>Hi, I'm a React App</h1>
-          {/* join('') - this assigns string. */}
-          <p className={assignedClass.join( ' ' )}>This is really working!</p>
-          <button
-            className={btnClass}
-            onClick={this.togglePersonsHandler}>Toggle Persons</button>
+           <ErrorBoundary><Cockpit
+             cockpitTitle={this.props.newTitle}
+             persons={this.state.persons}
+             showPersons={this.state.showPersons}
+             clicked={this.togglePersonsHandler}
+             /></ErrorBoundary>
           {persons}
         </div>
     );

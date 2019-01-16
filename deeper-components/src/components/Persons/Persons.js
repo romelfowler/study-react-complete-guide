@@ -6,17 +6,30 @@ class Persons extends Component {
   // LIFECYCLE HOOKS
   constructor(props) {
     super(props);
-    console.log('[App.js] Persons Constructor', props);
+    console.log('[Persons.js] Persons Constructor', props);
 
   }
   componentWillMount() {
-    console.log('[App.js] Persons Component Will Mount');
+    console.log('[Persons.js] Persons Component Will Mount');
   }
   componentDidMount(){
-    console.log('[App.js] Persons Component Did Mount');
+    console.log('[Persons.js] Persons Component Did Mount');
+  }
+  componentWillReceiveProps(nextProps){
+      console.log('[Persons.js] Component will receieve props', nextProps);
+  }
+  shouldComponentUpdate(nextProps, nextState){
+      console.log('[Persons.js] Should component update', nextProps, nextState);
+      return nextProps.person !== this.props.person;
+  }
+  componentWillUpdate (nextProps, nextState) {
+    console.log('[Persons.js] component will update', nextProps, nextState);
+  }
+  componentDidUpdate (nextProps, nextState) {
+    console.log('[Persons.js] component did update', nextProps, nextState);
   }
   render() {
-    console.log('[App.js] Persons render');
+    console.log('[Persons.js] Persons render');
 
     return this.props.person.map( ( person, index ) => {
         return <Person

@@ -20,7 +20,8 @@ class Persons extends Component {
   }
   shouldComponentUpdate(nextProps, nextState){
       console.log('[Persons.js] Should component update', nextProps, nextState);
-      return nextProps.person !== this.props.person;
+      // return nextProps.person !== this.props.person;
+      return true;
   }
   componentWillUpdate (nextProps, nextState) {
     console.log('[Persons.js] component will update', nextProps, nextState);
@@ -30,7 +31,7 @@ class Persons extends Component {
   }
   render() {
     console.log('[Persons.js] Persons render');
-
+    // can return an array of elements
     return this.props.person.map( ( person, index ) => {
         return <Person
           key={person.id}

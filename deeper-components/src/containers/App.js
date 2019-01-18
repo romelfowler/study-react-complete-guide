@@ -5,6 +5,7 @@ import Classes from './App.css';
 import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
+import withClass from '../hoc/WithClass';
 
 // Props gets passed because of "extend Component"
 class App extends Component {
@@ -38,7 +39,10 @@ class App extends Component {
   //   otherState: 'some other value',
   //   showPersons: false
   // }
-
+ shouldComponentUpdate (nextProps, nextState) {
+   console.log('[App.js] Should Component Update' , nextProps, nextState);
+   return true;
+ }
   nameChangedHandler = ( event, id ) => {
     const personIndex = this.state.persons.findIndex( p => {
       return p.id === id;
@@ -86,8 +90,10 @@ class App extends Component {
       );
     }
     return (
+      <WithClass class={Classes.App}>
+         // <div className={Classes.App}>
+           <buttons onClick={()=> {this.setState({showPersons: true})}}>Show persons</buttons>
 
-         <div className={Classes.App}>
            <ErrorBoundary><Cockpit
              cockpitTitle={this.props.newTitle}
              persons={this.state.persons}
@@ -95,7 +101,8 @@ class App extends Component {
              clicked={this.togglePersonsHandler}
              /></ErrorBoundary>
           {persons}
-        </div>
+        // </div>
+        </WithClass>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Auxilary from '../../hoc/Auxilary'
 // css
 import Classes from './Cockpit.css'
 
@@ -7,10 +7,9 @@ const Cockpit = (props) => {
   // get red, bold
   // let classes = ['red','bold'].join('');
   const assignedClass = [];
-  let btnClass = '';
+  let btnClass = Classes.Button;
   if(props.showPersons) {
-    btnClass = Classes.Red;
-
+    btnClass =[Classes.Button, Classes.Red].join(' ');
   }
   if ( props.persons.length <= 2 ) {
     assignedClass.push( Classes.red ); // classes = ['red']
@@ -21,7 +20,7 @@ const Cockpit = (props) => {
 
 
   return(
-    <div className={Classes.Cockpit}>
+    <Auxilary>
       <h1>{props.cockpitTitle} : Hi, I'm a CockPit</h1>
       {/* join('') - this assigns string. */}
       <p className={assignedClass.join( ' ' )}>This is really working!</p>
@@ -29,7 +28,7 @@ const Cockpit = (props) => {
         className={btnClass}
         onClick={props.clicked}>Toggle Persons
       </button>
-    </div>
+    </Auxilary>
   );
 }
 

@@ -5,7 +5,9 @@ import Classes from './App.css';
 import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import withClass from '../hoc/WithClass';
+import WithClass from '../hoc/WithClass';
+import Auxiliary from '../hoc/Auxilary';
+
 
 // Props gets passed because of "extend Component"
 class App extends Component {
@@ -89,9 +91,10 @@ class App extends Component {
         </div>
       );
     }
+    // <div className={Classes.App}>
+    // </div>
     return (
-      <WithClass class={Classes.App}>
-         // <div className={Classes.App}>
+      <Auxiliary class={Classes.App}>
            <buttons onClick={()=> {this.setState({showPersons: true})}}>Show persons</buttons>
 
            <ErrorBoundary><Cockpit
@@ -101,8 +104,7 @@ class App extends Component {
              clicked={this.togglePersonsHandler}
              /></ErrorBoundary>
           {persons}
-        // </div>
-        </WithClass>
+        </Auxiliary>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
   }

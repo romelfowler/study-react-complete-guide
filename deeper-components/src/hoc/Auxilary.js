@@ -1,6 +1,6 @@
 // Higher order component - hoc
-const Auxilary = (props) => {
+const auxiliary = (props) => {
   // this is empty
   return props.children
 };
-export default Auxilary;
+export default auxiliary;

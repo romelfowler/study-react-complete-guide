@@ -20,7 +20,7 @@ const Cockpit = (props) => {
 
 
   return(
-    <Auxilary>
+    <Auxilary class={Classes.Button}>
       <h1>{props.cockpitTitle} : Hi, I'm a CockPit</h1>
       {/* join('') - this assigns string. */}
       <p className={assignedClass.join( ' ' )}>This is really working!</p>

@@ -17,11 +17,13 @@ class Person extends Component {
 
     componentDidMount () {
         console.log( '[Person.js] Inside componentDidMount()' );
-          if (this.props.position === 0 ) {
-            this.inputElement.current.focus();
-          }
+        if (this.props.position === 0) {
+          this.inputElement.current.focus();
+        }
     }
-
+    focus(){
+      this.inputElement.current.focus();
+    }
     render () {
       // const rnd = Math.random();
       // if (rnd <= 0.7) {

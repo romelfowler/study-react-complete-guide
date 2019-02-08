@@ -11,14 +11,20 @@ import React, {Component} from 'react';
 // Statefull component
 // Annonymous Class
 const wClass = (WrappedComponent, className) => {
-  return class extends Component {
+  const WClass = class extends Component {
     render() {
       return (
           <div className={className}>
-            <WrappedComponent {...this.props}/>
+            <WrappedComponent ref={this.props.forwardRef} {...this.props}/>
           </div>
         )
     }
   }
+  return React.forwardRef((props, ref) => {
+    return < WClass
+        {...props }
+        forwardRef={ref}
+      />;
+  });
 }
 export default wClass;

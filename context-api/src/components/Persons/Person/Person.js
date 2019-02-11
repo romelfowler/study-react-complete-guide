@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 
 import Auxiliary from '../../../hoc/Auxiliary';
-import classes from './Person.css';
+import Classes from './Person.css';
+import {AuthContext} from '../../../containers/App';
 
 class Person extends Component {
   render() {
     console.log('[Person.js] rendering...');
     return (
-      <Auxiliary>
+      <Auxiliary classes={Classes.Person}>
+        <AuthContext.Consumer>
+          {auth =>  auth ? <p>authenticated!</p> : null }
+        </AuthContext.Consumer>
         <p onClick={this.props.click}>
           I'm {this.props.name} and I am {this.props.age} years old!
         </p>
